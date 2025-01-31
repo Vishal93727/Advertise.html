@@ -11,7 +11,7 @@ h1, h2, h3 {
   color: #00cc99;
 }
 
-/* Navbar */
+/* Navbar 
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -42,21 +42,126 @@ h1, h2, h3 {
 
 .navbar-links .nav-link:hover {
   color: #00cc99;
+}*/
+/* Navbar styling */
+
+/* Navbar Styling */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Ensures the navbar is in a stacking context */
+  z-index: 1000; /* Gives the navbar a higher layer in the stack */
 }
 
-/* Dropdown */
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Hamburger Icon for Mobile */
+.hamburger-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 2em;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar-links a {
+  color: #fff;
+  font-size: 1.2em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-links i {
+  margin-right: 8px;
+}
+
+.navbar-links a:hover {
+  color: #f0f0f0;
+}
+
+/* Dropdown Menu */
 .dropdown-menu {
   display: none;
   position: absolute;
+  top: 100%;
+  left: 0;
   background-color: #333;
-  padding: 10px;
   list-style: none;
-  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  z-index: 1001; /* Ensures dropdown menu is on top of the navbar */
 }
 
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+.dropdown-item {
+  padding: 10px 20px;
+}
+
+.dropdown-item a {
+  color: #fff;
+}
+
+.dropdown-item a:hover {
+  background-color: #444;
+}
+
+/* Mobile View Styling */
+@media (max-width: 768px) {
+  /* Show Hamburger Menu on Mobile */
+  .hamburger-icon {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #333;
+    text-align: center;
+    padding-top: 10px;
+    z-index: 1000; /* Ensure the mobile navbar has a high z-index */
+  }
+
+  .navbar-links.active {
+    display: block;
+  }
+
+  .navbar-links li {
+    margin: 15px 0;
+  }
+
+  /* Dropdown Menu for Mobile */
+  .dropdown-menu {
+    position: relative;
+    z-index: 1009; /* Ensures dropdown is on top of the mobile menu */
+  }
+}
+
 
 /* Hero Section */
 .hero {
@@ -135,24 +240,115 @@ h1, h2, h3 {
 .category-card:hover {
   transform: scale(1.05);
 }
+.category-description{
+  color: black;
+}
 
-/* Featured Products */
+
+/* Featured Products Section */
 .featured-products {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 40px 30px;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
 }
 
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Product Cards Grid */
 .product-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
 
+/* Individual Product Card */
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
 
+/* Product Card Hover Effect */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Image Styling */
+.product-image {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Image Hover Effect */
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+/* Product Title */
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444;
+    margin: 10px 0;
+}
+
+/* Product Description */
+.product-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Product Price */
+.product-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e44d26;
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #e44d26;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: #c03c1a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .product-card {
+        padding: 10px;
+    }
+}
 
 /* Fix for category images */
 .category-card {
@@ -177,31 +373,6 @@ h1, h2, h3 {
   border-radius: 10px;
 }
 
-/* Fix for product images */
-.product-card {
-  width: 200px; /* Fixed width */
-  height: 320px; /* Fixed height */
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 10px;
-  background-color: #fff;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.category-description{
-  color: black;
-}
-.product-image {
-  width: 100%;
-  height: 250px; /* Fixed height for consistency */
-  object-fit: cover;
-  border-radius: 10px;
-}
 
 /* Form Styles */
 .form {
@@ -234,33 +405,68 @@ h1, h2, h3 {
   outline: none;
   border: 2px solid #00cc99;
 }
-
 /* Profile Section */
-.profile-card {
+.profile-section {
   text-align: center;
   padding: 20px;
-  background-color: #222;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 400px;
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile-card {
+  background: grey;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: scale(1.05);
 }
 
 .profile-image {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin-bottom: 10px;
+  object-fit: cover;
 }
 
 .profile-name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.profile-email, .profile-ads {
-  font-size: 16px;
-  color: #aaa;
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
+
+.btn-primary { background: #28a745; color: white; }
+.btn-secondary { background: #007bff; color: white; }
+.btn-danger { background: #dc3545; color: white; }
+.btn:hover { opacity: 0.8; }
+
+/* Dark Mode */
+.dark-mode .profile-card {
+  background: #333;
+  color: white;
+}
+
+
 /* General Section Styling */
 .section-title {
   font-size: 2rem;
@@ -519,4 +725,118 @@ h1, h2, h3 {
 
 .container.active .toggle-right{
     transform: translateX(200%);
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Footer Container */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Footer Sections */
+.footer-section {
+    text-align: left;
+    padding: 10px;
+}
+
+/* Footer Headings */
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #f4a261;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #f4a261;
+}
+
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter-form button {
+    padding: 8px 15px;
+    border: none;
+    background: #f4a261;
+    color: #222;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.newsletter-form button:hover {
+    background: #e76f51;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: left;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    color: #ddd;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #f4a261;
+    transform: scale(1.2);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    font-size: 0.9rem;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+.theme-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  color: #fff;
+  cursor: pointer;
 }
